@@ -1,0 +1,38 @@
+service: widget-users
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+  stage: dev
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
+
+plugins:
+  - serverless-domain-manager
+  - serverless-offline
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    prod: sls.workshop.sketchdev.io
+    staging: staging-sls.workshop.sketchdev.io
+    dev: dev-sls.workshop.sketchdev.io
+
+  customDomain:
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    basePath: 'users' # This will be prefixed to all routes
+    stage: '${self:custom.stage}'
+    createRoute53Record: true
+

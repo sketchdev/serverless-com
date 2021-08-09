@@ -1,0 +1,39 @@
+{
+  "name": "lambda-auth0-authenticator",
+  "version": "0.1.0",
+  "description": "An AWS Lambda function to provide a Custom Authenticator for AWS API Gateway that verifies RS* signed tokens",
+  "main": "index.js",
+  "scripts": {
+    "test": "lambda-local --timeout 300 --lambda-path index.js --event-path event.json",
+    "bundle": "rm -f custom-authorizer.zip ; zip custom-authorizer.zip -r *.js *.json node_modules/"
+  },
+  "author": "Jason Haines",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "auth0": "^2.36.1",
+    "bluebird": "^3.7.2",
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.12.3"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.957.0",
+    "lambda-local": "^1.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0-samples/lambda-jwt-rsa-authorizer.git"
+  },
+  "keywords": [
+    "aws",
+    "api-gateway",
+    "auth0",
+    "custom-authorizer",
+    "authentication",
+    "lambda"
+  ],
+  "bugs": {
+    "url": "https://github.com/auth0-samples/lambda-jwt-rsa-authorizer/issues"
+  },
+  "homepage": "https://github.com/auth0-samples/lambda-jwt-rsa-authorizer#readme"
+}

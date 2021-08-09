@@ -1,0 +1,16 @@
+{
+  "name": "widget-express",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node handler.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-domain-manager": "^5.1.4",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.0.0"
+  }
+}
